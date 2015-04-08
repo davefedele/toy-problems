@@ -12,3 +12,39 @@ Output: index1=1, index2=2
 @param {number} target
 @return {number[]} two integers in an array, ie: [index1, index2]
 */
+
+var twoSum = function(numbers, target) {
+  var len = numbers.length;
+  
+  if( len < 2 ) {
+      return [];
+  }
+  
+  var hashMap = createHashMap(numbers);
+  
+  for( var i=0; i<len; i++ ) {
+      var num = target - numbers[i];
+      if( hashMap.hasOwnProperty(num) && hashMap[num] !== i ) {
+          return [ i+1, hashMap[num]+1 ];
+      }
+  }
+};
+
+function createHashMap( arr ) {
+    var hashMap = {};
+    for( var i=0; i < arr.length; i++ ) {
+        hashMap[arr[i]] = i;
+    }
+    return hashMap;
+}
+
+
+/*
+O(n2) runtime, O(1) space – Brute force:
+
+The brute force approach is simple. Loop through each element x and find if there is another value that equals to target – x. As finding another value requires looping through the rest of array, its runtime complexity is O(n2).
+
+O(n) runtime, O(n) space – Hash table:
+
+We could reduce the runtime complexity of looking up a value to O(1) using a hash map that maps a value to its index.
+*/
