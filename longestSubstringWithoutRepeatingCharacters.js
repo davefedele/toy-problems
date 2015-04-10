@@ -5,5 +5,24 @@ Given a string, find the length of the longest substring without repeating chara
 @return {number}
 */
 var lengthOfLongestSubstring = function(s) {
+  if( s.length === 0 ) {
+      return 0;
+  }
+  var seen = {};
+  var longest = current = start = 0;
     
+  for( var i=0; i<s.length; i++ ) {
+      if( seen[s.charAt(i)] === undefined || seen[s[i]] < start) {
+          current += 1;
+          seen[s.charAt(i)] = i;
+        if( current > longest ) {
+              longest = current;
+        }    
+      }else{
+          start = seen[s.charAt(i)] + 1; 
+          current = i - seen[s[i]];
+          seen[s.charAt(i)] = i;
+      }
+  }
+  return longest;
 };
