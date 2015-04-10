@@ -12,7 +12,7 @@ var lengthOfLongestSubstring = function(s) {
   var longest = current = start = 0;
     
   for( var i=0; i<s.length; i++ ) {
-      if( seen[s.charAt(i)] === undefined || seen[s[i]] < start) {
+      if( seen[s.charAt(i)] === undefined || seen[s.charAt(i)] < start) {
           current += 1;
           seen[s.charAt(i)] = i;
         if( current > longest ) {
@@ -20,7 +20,7 @@ var lengthOfLongestSubstring = function(s) {
         }    
       }else{
           start = seen[s.charAt(i)] + 1; 
-          current = i - seen[s[i]];
+          current = i - seen[s.charAt(i)];
           seen[s.charAt(i)] = i;
       }
   }
