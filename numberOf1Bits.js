@@ -8,5 +8,13 @@ For example, the 32-bit integer ’11' has binary representation 000000000000000
 @return {number}
 */
 var hammingWeight = function(n) {
+    var result = 0;
+    var num = n.toString(2);
+    for(var i=0; i<num.length; i++){
+        if(num.charAt(i) === "1"){
+            result++;
+        }
+    }
+    return result;
     
 };
