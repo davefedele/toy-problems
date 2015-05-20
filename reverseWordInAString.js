@@ -15,5 +15,17 @@
  * @param {string} str
  * @returns {string}
  */
+/**
+ * @param {string} str
+ * @returns {string}
+ */
 var reverseWords = function(str) {
+    str = str.trim();
+    
+    var arr = str.split(' ');
+    var arrNoSpaces = arr.filter(function(str) {
+        return /\S/.test(str);
+        });
+        
+    return arrNoSpaces.reverse().join(' ');     
 };
