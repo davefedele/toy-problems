@@ -17,5 +17,8 @@
 // 'Showing 1 to 8 of 8 Products.'
 
 var paginationText = function(pageNumber, pageSize, totalProducts){
- 
+  var start = (pageSize * (pageNumber - 1)) + 1;
+  var end = (start + pageSize - 1) > totalProducts ? totalProducts: (start + pageSize - 1);
+  
+  return ('Showing ' + start + ' to ' + end + ' of ' + totalProducts + ' Products.');
 }
